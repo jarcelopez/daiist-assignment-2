@@ -1,0 +1,177 @@
+{
+  "positive_classes": [
+    "violence",
+    "weaponized"
+  ],
+  "negative_class": "normal",
+  "weights": "weights\\best.pt",
+  "test_dir": "datasets\\crime-detection-jekv6-videosplit\\test",
+  "n_test": 1831,
+  "finetuned": {
+    "accuracy_3class": 0.6515565264882578,
+    "confusion_matrix": {
+      "labels": [
+        "normal",
+        "violence",
+        "weaponized"
+      ],
+      "matrix": [
+        [
+          496,
+          68,
+          37
+        ],
+        [
+          180,
+          433,
+          95
+        ],
+        [
+          110,
+          148,
+          264
+        ]
+      ]
+    },
+    "per_class": {
+      "normal": {
+        "precision": 0.6310432569974554,
+        "recall": 0.8252911813643927,
+        "f1": 0.71521268925739,
+        "support": 601,
+        "tp": 496,
+        "fp": 290,
+        "fn": 105
+      },
+      "violence": {
+        "precision": 0.6671802773497689,
+        "recall": 0.6115819209039548,
+        "f1": 0.6381724392041268,
+        "support": 708,
+        "tp": 433,
+        "fp": 216,
+        "fn": 275
+      },
+      "weaponized": {
+        "precision": 0.6666666666666666,
+        "recall": 0.5057471264367817,
+        "f1": 0.5751633986928104,
+        "support": 522,
+        "tp": 264,
+        "fp": 132,
+        "fn": 258
+      }
+    },
+    "binary": {
+      "tp": 940,
+      "fp": 105,
+      "tn": 496,
+      "fn": 290,
+      "precision": 0.8995215311004785,
+      "recall": 0.7642276422764228,
+      "specificity": 0.8252911813643927,
+      "accuracy": 0.7842708902239214,
+      "positive_definition": [
+        "violence",
+        "weaponized"
+      ]
+    }
+  },
+  "baselines": {
+    "majority_class": {
+      "predicts": "violence",
+      "train_counts": {
+        "normal": 2865,
+        "violence": 3386,
+        "weaponized": 2568
+      },
+      "accuracy_3class": 0.3866739486619334,
+      "confusion_matrix": {
+        "labels": [
+          "normal",
+          "violence",
+          "weaponized"
+        ],
+        "matrix": [
+          [
+            0,
+            601,
+            0
+          ],
+          [
+            0,
+            708,
+            0
+          ],
+          [
+            0,
+            522,
+            0
+          ]
+        ]
+      },
+      "binary": {
+        "tp": 1230,
+        "fp": 601,
+        "tn": 0,
+        "fn": 0,
+        "precision": 0.6717640633533588,
+        "recall": 1.0,
+        "specificity": 0.0,
+        "accuracy": 0.6717640633533588,
+        "positive_definition": [
+          "violence",
+          "weaponized"
+        ]
+      }
+    },
+    "predict_nothing": {
+      "predicts": "normal",
+      "accuracy_3class": 0.3282359366466412,
+      "confusion_matrix": {
+        "labels": [
+          "normal",
+          "violence",
+          "weaponized"
+        ],
+        "matrix": [
+          [
+            601,
+            0,
+            0
+          ],
+          [
+            708,
+            0,
+            0
+          ],
+          [
+            522,
+            0,
+            0
+          ]
+        ]
+      },
+      "binary": {
+        "tp": 0,
+        "fp": 0,
+        "tn": 601,
+        "fn": 1230,
+        "precision": 0.0,
+        "recall": 0.0,
+        "specificity": 1.0,
+        "accuracy": 0.3282359366466412,
+        "positive_definition": [
+          "violence",
+          "weaponized"
+        ]
+      },
+      "zero_shot_interpretation": "No label-compatible zero-shot: pretrained yolo11n-cls (ImageNet) and COCO detectors cannot emit normal/violence/weaponized. Zero-shot stand-in = predict-nothing (always normal)."
+    }
+  },
+  "notes": {
+    "overfit": "Val top-1 peaked epoch 4 (~0.75); epoch 15 ~0.69. Using best.pt.",
+    "top5": "Ignore top-5 with 3 classes; it is trivially 1.0.",
+    "fn_costs": "violence vs weaponized FN costs will differ in Step 5; not applied yet."
+  }
+}

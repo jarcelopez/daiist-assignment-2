@@ -1,0 +1,14 @@
+{
+  "model": "yolo11n-cls.pt",
+  "epochs": 15,
+  "imgsz": 224,
+  "batch": 16,
+  "seed": 0,
+  "device": "0",
+  "data": "datasets/crime-detection-jekv6-videosplit",
+  "roboflow": "pdl-qtfdi/crime-detection-jekv6/1",
+  "split": "video-level 70/15/15 stratified by class",
+  "weights": "weights/best.pt",
+  "run_dir": "/content/daiist-assignment-2/runs/crime_videosplit",
+  "colab": true
+}
